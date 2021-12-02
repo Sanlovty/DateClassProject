@@ -1,7 +1,7 @@
 #include "Date.h"
 #include "Date.h"
 
-Date::triple Date::splitString_(const string& date) const
+triple Date::splitString_(const string& date) const
 {
 	string day, month, year;
 	const char* const exceptionMessage = "Wrong string-date format. Must be XX.XX.XX";
@@ -103,7 +103,7 @@ size_t Date::getYear() const
 	return date_.year;
 }
 
-Date::triple Date::getDate() const
+triple Date::getDate() const
 {
 	return triple(date_.day, date_.month, date_.year);
 }

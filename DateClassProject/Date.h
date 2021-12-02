@@ -10,6 +10,7 @@ using std::to_string;
 using std::exception;
 using std::stoul;
 using std::get;
+using triple = tuple<size_t, size_t, size_t>;
 
 class Date
 {
@@ -17,8 +18,6 @@ class Date
 	static const size_t defaultDay_ = 1;
 	static const size_t defaultMonth_ = 1;
 	static const size_t defaultYear_ = 1970;
-
-	using triple = tuple<size_t, size_t, size_t>;
 
 	struct date_t
 	{
