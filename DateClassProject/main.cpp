@@ -6,8 +6,9 @@ int main()
 {
 	try
 	{
-		Date date(30, 2, 2024);
-		cout << date.toString();
+		Date date(28, 2, 2021);
+		cout << endl << date.toDaysMethod_(date) << endl;
+		cout << date.differenceBetween(Date(20, 9, 2024));
 	}
 	catch (const exception& ex)
 	{

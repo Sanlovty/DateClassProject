@@ -10,6 +10,7 @@ using std::to_string;
 using std::exception;
 using std::stoul;
 using std::get;
+using std::abs;
 using triple = tuple<size_t, size_t, size_t>;
 
 // TODO: комментарии 
@@ -43,8 +44,11 @@ class Date
 	triple splitString_(const string& date) const;
 	size_t roundBy_(const size_t& value, const size_t& bound) const;
 	size_t parseStringValue_(const string& value) const;
+	bool isLeapYearMethod_(const size_t& year) const;
 
 	void roundDays_();
+	size_t toDaysMethod_(const Date& date) const;
+
 public:
 	Date();
 	Date(const string& date);
@@ -66,7 +70,9 @@ public:
 	void setDate(const string& day, const string& month, const string& year);
 	void setDate(const string& date);
 
+	size_t toDays() const;
 	bool isLeapYear() const;
+	size_t differenceBetween(Date date) const;
 
 	Date& operator =(const Date& other);
 	string toString() const;

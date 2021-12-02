@@ -72,6 +72,38 @@ void Date::roundDays_()
 	}
 }
 
+size_t Date::toDaysMethod_(const Date& date) const
+{
+	size_t days = 0;
+	for (size_t y = 1; y <= date.getYear(); y++)
+	{
+		if (isLeapYearMethod_(y))
+		{
+			days += 366;
+		}
+		else
+		{
+			days += 365;
+		}
+	}
+	for (size_t m = 1; m < date.getMonth(); m++)
+	{
+		if (m == 2 && isLeapYearMethod_(date.getYear()))
+		{
+			days += monthDays_[m - 1] + 1;
+		}
+		else
+		{
+			days += monthDays_[m - 1];
+		}
+	}
+	for (size_t d = 1; d <= date.getDay(); d++)
+	{
+		days++;
+	}
+	return days;
+}
+
 size_t Date::parseStringValue_(const string& value) const
 {
 	const char* const exceptionMessage = "Incorrect string value. Allowed symbols: [0-9]";
@@ -199,11 +231,27 @@ void Date::setDate(const string& date)
 }
 
 /**
- * Алгоримт определения високостного года https://docs.microsoft.com/ru-ru/office/troubleshoot/excel/determine-a-leap-year
+ * Алгоритм определения високостного года https://docs.microsoft.com/ru-ru/office/troubleshoot/excel/determine-a-leap-year
  */
+bool Date::isLeapYearMethod_(const size_t& year) const
+{
+	return (year % 100 == 0) ? (year % 400 == 0) : (year % 4 == 0);
+}
+
+size_t Date::toDays() const
+{
+	return toDaysMethod_(*this);
+}
+
 bool Date::isLeapYear() const
 {
-	return (date_.year % 400 == 0 || date_.year % 100 != 0) && (date_.year % 4 == 0);
+	return isLeapYearMethod_(date_.year);
+}
+
+size_t Date::differenceBetween(Date date) const
+{
+	return static_cast<size_t>(abs(
+		static_cast<int64_t>(toDaysMethod_(*this)) - static_cast<int64_t>(toDaysMethod_(date))));
 }
 
 Date& Date::operator=(const Date& other)
