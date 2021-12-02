@@ -6,8 +6,6 @@
 
 using std::string;
 using std::tuple;
-using std::cout;
-using std::endl;
 using std::isdigit;
 using std::to_string;
 using std::exception;
