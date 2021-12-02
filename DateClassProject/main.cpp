@@ -1,14 +1,37 @@
 #include <iostream>
 #include "Date.h"
+#include <Windows.h>
 using namespace std;
 
 int main()
 {
+	SetConsoleOutputCP(1251);
 	try
 	{
-		Date date(3, 12, 2021);
-		cout << endl << date.dateBeforeByDays(745).toString() << endl;
-		cout << endl << date.dateAfterByDays(745).toString() << endl;
+		Date date1(3, 12, 2021);
+		Date date2(25, 8, 2021);
+
+		cout << endl << " оличество дней между " << date1.toString() << " и " << date2.toString() << " = " << date1.
+			differenceBetween(date2) << endl;
+		cout << endl << "„ерез 745 дней от " << date1.toString() << " будет " << date1.dateBeforeByDays(745).toString()
+			<< endl;
+		cout << endl << "745 дней назад от " << date1.toString() << " будет " << date1.dateAfterByDays(745).toString()
+			<< endl;
+		cout << endl << "”становим дате " << date1.toString() << " день 15 ";
+		date1.setDay(15);
+		cout << "и получим " << date1.toString() << endl;
+		cout << endl << "”становим дате " << date1.toString() << " день 32 ";
+		date1.setDay(32);
+		cout << "и получим " << date1.toString() << endl;
+		cout << endl << "”становим дате " << date1.toString() << " мес€ц 15 ";
+		date1.setMonth(15);
+		cout << "и получим " << date1.toString() << endl;
+		cout << endl << "”становим дате " << date1.toString() << " мес€ц 2 ";
+		date1.setMonth(2);
+		cout << "и получим " << date1.toString() << endl;
+		cout << endl << "”становим дате " << date1.toString() << " год 2004 ";
+		date1.setYear(2004);
+		cout << "и получим " << date1.toString() << endl;
 	}
 	catch (const exception& ex)
 	{
