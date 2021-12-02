@@ -355,7 +355,8 @@ Date& Date::operator=(const Date& other)
 
 string Date::toString() const
 {
-	return string(to_string(date_.day)
-		+ '.' + to_string(date_.month)
-		+ '.' + to_string(date_.year));
+	string day = date_.day < 10 ? '0' + to_string(date_.day) : to_string(date_.day);
+	string month = date_.month < 10 ? '0' + to_string(date_.month) : to_string(date_.month);
+
+	return string(day + '.' + month + '.' + to_string(date_.year));
 }
