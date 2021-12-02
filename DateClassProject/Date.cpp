@@ -333,17 +333,17 @@ size_t Date::differenceBetween(Date date) const
 
 Date Date::dateBeforeByDays(const size_t& days) const
 {
-	const size_t dateDays = toDays();
+	const size_t dateDays = toDays() + 1;
 	if (days > dateDays)
 	{
 		throw exception("The date is less than days from parameter");
 	}
-	return daysToDate_(dateDays - days - 1);
+	return daysToDate_(dateDays - days);
 }
 
 Date Date::dateAfterByDays(const size_t& days) const
 {
-	return daysToDate_(toDays() + days + 1);
+	return daysToDate_(toDays() + 1 + days);
 }
 
 Date& Date::operator=(const Date& other)
