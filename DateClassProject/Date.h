@@ -16,14 +16,12 @@ using std::get;
 using std::abs;
 using triple = tuple<size_t, size_t, size_t>;
 
-// TODO: комментарии 
 class Date
 {
 	const char stringSeparator_ = '.';
 	static const size_t defaultDay_ = 1;
 	static const size_t defaultMonth_ = 1;
 	static const size_t defaultYear_ = 1970;
-	//Нюанс: Февраль(1 id) в обычный год - 28, високостный - 29
 	const size_t monthDays_[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
 	struct date_t

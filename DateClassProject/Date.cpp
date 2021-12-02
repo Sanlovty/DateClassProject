@@ -307,9 +307,6 @@ void Date::setDate(const string& date)
 	*this = Date(date);
 }
 
-/**
- * Алгоритм определения високостного года https://docs.microsoft.com/ru-ru/office/troubleshoot/excel/determine-a-leap-year
- */
 bool Date::isLeapYearMethod_(const size_t& year) const
 {
 	return (year % 100 == 0) ? (year % 400 == 0) : (year % 4 == 0);
