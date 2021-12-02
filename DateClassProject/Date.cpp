@@ -54,6 +54,24 @@ triple Date::splitString_(const string& date) const
 	return triple(stoul(day), stoul(month), stoul(year));
 }
 
+size_t Date::roundBy_(const size_t& value, const size_t& bound) const
+{
+	return value % bound;
+}
+
+void Date::roundDays_()
+{
+	if (date_.day > monthDays_[date_.month - 1])
+	{
+		if (date_.month == 2 && isLeapYear())
+		{
+			date_.day = monthDays_[date_.month - 1] + 1;
+			return;
+		}
+		date_.day = monthDays_[date_.month - 1];
+	}
+}
+
 size_t Date::parseStringValue_(const string& value) const
 {
 	const char* const exceptionMessage = "Incorrect string value. Allowed symbols: [0-9]";
@@ -74,13 +92,14 @@ Date::Date() : date_(date_t())
 Date::Date(const string& date)
 {
 	const triple response = splitString_(date);
-	setDay(get<0>(response));
-	setMonth(get<1>(response));
-	setYear(get<2>(response));
+	*this = Date(get<0>(response), get<1>(response), get<2>(response));
 }
 
-Date::Date(const size_t& day, const size_t& month, const size_t& year) : date_(day, month, year)
+Date::Date(const size_t& day, const size_t& month, const size_t& year)
 {
+	setYear(year);
+	setMonth(month);
+	setDay(day);
 }
 
 Date::Date(const string& day, const string& month, const string& year)
@@ -110,11 +129,16 @@ triple Date::getDate() const
 
 void Date::setDay(const size_t& day)
 {
-	date_.day = day % 32;
 	if (date_.day == 0)
 	{
 		date_.day = defaultDay_;
 	}
+	else
+	{
+		date_.day = day;
+	}
+
+	roundDays_();
 }
 
 void Date::setDay(const string& day)
@@ -124,11 +148,16 @@ void Date::setDay(const string& day)
 
 void Date::setMonth(const size_t& month)
 {
-	date_.month = month % 13;
-	if (date_.month == 0)
+	date_.month = roundBy_(month, 13);
+	if (month == 0)
 	{
 		date_.month = defaultMonth_;
 	}
+	else
+	{
+		date_.month = month;
+	}
+	roundDays_();
 }
 
 void Date::setMonth(const string& month)
@@ -138,7 +167,15 @@ void Date::setMonth(const string& month)
 
 void Date::setYear(const size_t& year)
 {
-	date_.year = year == 0 ? defaultYear_ : year;
+	if (year == 0)
+	{
+		date_.year = defaultYear_;
+	}
+	else
+	{
+		date_.year = year;
+	}
+	roundDays_();
 }
 
 void Date::setYear(const string& year)
@@ -161,21 +198,12 @@ void Date::setDate(const string& date)
 	*this = Date(date);
 }
 
+/**
+ * Алгоримт определения високостного года https://docs.microsoft.com/ru-ru/office/troubleshoot/excel/determine-a-leap-year
+ */
 bool Date::isLeapYear() const
 {
-	if (date_.year % 4 == 0)
-	{
-		if (date_.year % 100 == 0)
-		{
-			return true;
-		}
-		if (date_.year % 400 == 0)
-		{
-			return true;
-		}
-		return false;
-	}
-	return false;
+	return (date_.year % 400 == 0 || date_.year % 100 != 0) && (date_.year % 4 == 0);
 }
 
 Date& Date::operator=(const Date& other)

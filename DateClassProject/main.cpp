@@ -6,6 +6,8 @@ int main()
 {
 	try
 	{
+		Date date(30, 2, 2024);
+		cout << date.toString();
 	}
 	catch (const exception& ex)
 	{

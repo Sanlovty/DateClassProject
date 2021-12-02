@@ -22,6 +22,8 @@ class Date
 	static const size_t defaultDay_ = 1;
 	static const size_t defaultMonth_ = 1;
 	static const size_t defaultYear_ = 1970;
+	//Нюанс: Февраль(1 id) в обычный год - 28, високостный - 29
+	const size_t monthDays_[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
 	struct date_t
 	{
@@ -39,7 +41,10 @@ class Date
 	} date_;
 
 	triple splitString_(const string& date) const;
+	size_t roundBy_(const size_t& value, const size_t& bound) const;
 	size_t parseStringValue_(const string& value) const;
+
+	void roundDays_();
 public:
 	Date();
 	Date(const string& date);
