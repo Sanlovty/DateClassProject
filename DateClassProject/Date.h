@@ -16,7 +16,6 @@ using triple = tuple<size_t, size_t, size_t>;
 // TODO: метод, возвращающий дату через n дней, где n - параметр
 // TODO: метод, возвращающий дату за n дней, где n - параметр
 // TODO: метод, возвращающий разницу между date датой, где date - параметр
-// TODO: метод, определяющий високостность
 class Date
 {
 	const char stringSeparator_ = '.';
@@ -61,6 +60,8 @@ public:
 	void setDate(const size_t& day, const size_t& month, const size_t& year);
 	void setDate(const string& day, const string& month, const string& year);
 	void setDate(const string& date);
+
+	bool isLeapYear() const;
 
 	Date& operator =(const Date& other);
 	string toString() const;

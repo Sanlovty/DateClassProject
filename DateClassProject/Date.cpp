@@ -161,6 +161,23 @@ void Date::setDate(const string& date)
 	*this = Date(date);
 }
 
+bool Date::isLeapYear() const
+{
+	if (date_.year % 4 == 0)
+	{
+		if (date_.year % 100 == 0)
+		{
+			return true;
+		}
+		if (date_.year % 400 == 0)
+		{
+			return true;
+		}
+		return false;
+	}
+	return false;
+}
+
 Date& Date::operator=(const Date& other)
 {
 	if (this == &other)
