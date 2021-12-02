@@ -12,7 +12,7 @@ using std::stoul;
 using std::get;
 using triple = tuple<size_t, size_t, size_t>;
 
-// TODO: комментарии
+// TODO: комментарии 
 // TODO: метод, возвращающий дату через n дней, где n - параметр
 // TODO: метод, возвращающий дату за n дней, где n - параметр
 // TODO: метод, возвращающий разницу между date датой, где date - параметр
