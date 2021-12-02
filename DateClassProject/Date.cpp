@@ -104,6 +104,83 @@ size_t Date::toDaysMethod_(const Date& date) const
 	return days;
 }
 
+Date Date::daysToDate_(const size_t& days) const
+{
+	size_t daysCopy = days;
+	size_t years = 0;
+	size_t months = 1;
+	bool yearsEnough = false;
+	bool monthsEnough = false;
+
+	while (!yearsEnough && daysCopy >= 365)
+	{
+		if (isLeapYearMethod_(years))
+		{
+			if (daysCopy > 366)
+			{
+				years++;
+				daysCopy -= 366;
+			}
+			else
+			{
+				yearsEnough = true;
+			}
+		}
+		else
+		{
+			if (daysCopy > 365)
+			{
+				years++;
+				daysCopy -= 365;
+			}
+			else
+			{
+				yearsEnough = true;
+			}
+		}
+	}
+	while (!monthsEnough)
+	{
+		if (months == 2 && isLeapYearMethod_(years))
+		{
+			if (daysCopy > monthDays_[months - 1] + 1)
+			{
+				months++;
+				daysCopy -= monthDays_[months - 1] + 1;
+			}
+			else
+			{
+				monthsEnough = true;
+			}
+		}
+		else
+		{
+			if (daysCopy > monthDays_[months - 1])
+			{
+				daysCopy -= monthDays_[months - 1];
+				months++;
+			}
+			else
+			{
+				monthsEnough = true;
+			}
+		}
+	}
+	if (daysCopy == 0)
+	{
+		daysCopy = 1;
+	}
+	if (months == 0)
+	{
+		months = 1;
+	}
+	if (years == 0)
+	{
+		years = 1;
+	}
+	return Date(daysCopy, months, years);
+}
+
 size_t Date::parseStringValue_(const string& value) const
 {
 	const char* const exceptionMessage = "Incorrect string value. Allowed symbols: [0-9]";
@@ -252,6 +329,21 @@ size_t Date::differenceBetween(Date date) const
 {
 	return static_cast<size_t>(abs(
 		static_cast<int64_t>(toDaysMethod_(*this)) - static_cast<int64_t>(toDaysMethod_(date))));
+}
+
+Date Date::dateBeforeByDays(const size_t& days) const
+{
+	const size_t dateDays = toDays();
+	if (days > dateDays)
+	{
+		throw exception("The date is less than days from parameter");
+	}
+	return daysToDate_(dateDays - days - 1);
+}
+
+Date Date::dateAfterByDays(const size_t& days) const
+{
+	return daysToDate_(toDays() + days + 1);
 }
 
 Date& Date::operator=(const Date& other)

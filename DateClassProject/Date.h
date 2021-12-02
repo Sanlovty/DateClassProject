@@ -1,10 +1,13 @@
 #ifndef DATE_H
 #define DATE_H
+#include <iostream>
 #include <tuple>
 #include <string>
 
 using std::string;
 using std::tuple;
+using std::cout;
+using std::endl;
 using std::isdigit;
 using std::to_string;
 using std::exception;
@@ -14,9 +17,6 @@ using std::abs;
 using triple = tuple<size_t, size_t, size_t>;
 
 // TODO: комментарии 
-// TODO: метод, возвращающий дату через n дней, где n - параметр
-// TODO: метод, возвращающий дату за n дней, где n - параметр
-// TODO: метод, возвращающий разницу между date датой, где date - параметр
 class Date
 {
 	const char stringSeparator_ = '.';
@@ -48,6 +48,7 @@ class Date
 
 	void roundDays_();
 	size_t toDaysMethod_(const Date& date) const;
+	Date daysToDate_(const size_t& days) const;
 
 public:
 	Date();
@@ -73,6 +74,8 @@ public:
 	size_t toDays() const;
 	bool isLeapYear() const;
 	size_t differenceBetween(Date date) const;
+	Date dateBeforeByDays(const size_t& days) const;
+	Date dateAfterByDays(const size_t& days) const;
 
 	Date& operator =(const Date& other);
 	string toString() const;
