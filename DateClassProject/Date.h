@@ -12,6 +12,11 @@ using std::stoul;
 using std::get;
 using triple = tuple<size_t, size_t, size_t>;
 
+// TODO: комментарии
+// TODO: метод, возвращающий дату через n дней, где n - параметр
+// TODO: метод, возвращающий дату за n дней, где n - параметр
+// TODO: метод, возвращающий разницу между date датой, где date - параметр
+// TODO: метод, определяющий високостность
 class Date
 {
 	const char stringSeparator_ = '.';
@@ -32,10 +37,7 @@ class Date
 		date_t(const size_t& year, const size_t& month, const size_t& day) : year(year), month(month), day(day)
 		{
 		}
-	};
-
-
-	date_t date_;
+	} date_;
 
 	triple splitString_(const string& date) const;
 	size_t parseStringValue_(const string& value) const;
