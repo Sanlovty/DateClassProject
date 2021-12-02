@@ -358,5 +358,5 @@ string Date::toString() const
 	string day = date_.day < 10 ? '0' + to_string(date_.day) : to_string(date_.day);
 	string month = date_.month < 10 ? '0' + to_string(date_.month) : to_string(date_.month);
 
-	return string(day + '.' + month + '.' + to_string(date_.year));
+	return string(day + stringSeparator_ + month + stringSeparator_ + to_string(date_.year));
 }
