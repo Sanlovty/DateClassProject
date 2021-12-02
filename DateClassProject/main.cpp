@@ -11,27 +11,27 @@ int main()
 		Date date1(3, 12, 2021);
 		Date date2(25, 8, 2021);
 
-		cout << endl << "Êîëè÷åñòâî äíåé ìåæäó " << date1.toString() << " è " << date2.toString() << " = " << date1.
+		cout << endl << "ĞšĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ Ğ´Ğ½ĞµĞ¹ Ğ¼ĞµĞ¶Ğ´Ñƒ " << date1.toString() << " Ğ¸ " << date2.toString() << " = " << date1.
 			differenceBetween(date2) << endl;
-		cout << endl << "×åğåç 745 äíåé îò " << date1.toString() << " áóäåò " << date1.dateBeforeByDays(745).toString()
+		cout << endl << "Ğ§ĞµÑ€ĞµĞ· 745 Ğ´Ğ½ĞµĞ¹ Ğ¾Ñ‚ " << date1.toString() << " Ğ±ÑƒĞ´ĞµÑ‚ " << date1.dateBeforeByDays(745).toString()
 			<< endl;
-		cout << endl << "745 äíåé íàçàä îò " << date1.toString() << " áóäåò " << date1.dateAfterByDays(745).toString()
+		cout << endl << "745 Ğ´Ğ½ĞµĞ¹ Ğ½Ğ°Ğ·Ğ°Ğ´ Ğ¾Ñ‚ " << date1.toString() << " Ğ±ÑƒĞ´ĞµÑ‚ " << date1.dateAfterByDays(745).toString()
 			<< endl;
-		cout << endl << "Óñòàíîâèì äàòå " << date1.toString() << " äåíü 15 ";
+		cout << endl << "Ğ£ÑÑ‚Ğ°Ğ½Ğ¾Ğ²Ğ¸Ğ¼ Ğ´Ğ°Ñ‚Ğµ " << date1.toString() << " Ğ´ĞµĞ½ÑŒ 15 ";
 		date1.setDay(15);
-		cout << "è ïîëó÷èì " << date1.toString() << endl;
-		cout << endl << "Óñòàíîâèì äàòå " << date1.toString() << " äåíü 32 ";
+		cout << "Ğ¸ Ğ¿Ğ¾Ğ»ÑƒÑ‡Ğ¸Ğ¼ " << date1.toString() << endl;
+		cout << endl << "Ğ£ÑÑ‚Ğ°Ğ½Ğ¾Ğ²Ğ¸Ğ¼ Ğ´Ğ°Ñ‚Ğµ " << date1.toString() << " Ğ´ĞµĞ½ÑŒ 32 ";
 		date1.setDay(32);
-		cout << "è ïîëó÷èì " << date1.toString() << endl;
-		cout << endl << "Óñòàíîâèì äàòå " << date1.toString() << " ìåñÿö 15 ";
+		cout << "Ğ¸ Ğ¿Ğ¾Ğ»ÑƒÑ‡Ğ¸Ğ¼ " << date1.toString() << endl;
+		cout << endl << "Ğ£ÑÑ‚Ğ°Ğ½Ğ¾Ğ²Ğ¸Ğ¼ Ğ´Ğ°Ñ‚Ğµ " << date1.toString() << " Ğ¼ĞµÑÑÑ† 15 ";
 		date1.setMonth(15);
-		cout << "è ïîëó÷èì " << date1.toString() << endl;
-		cout << endl << "Óñòàíîâèì äàòå " << date1.toString() << " ìåñÿö 2 ";
+		cout << "Ğ¸ Ğ¿Ğ¾Ğ»ÑƒÑ‡Ğ¸Ğ¼ " << date1.toString() << endl;
+		cout << endl << "Ğ£ÑÑ‚Ğ°Ğ½Ğ¾Ğ²Ğ¸Ğ¼ Ğ´Ğ°Ñ‚Ğµ " << date1.toString() << " Ğ¼ĞµÑÑÑ† 2 ";
 		date1.setMonth(2);
-		cout << "è ïîëó÷èì " << date1.toString() << endl;
-		cout << endl << "Óñòàíîâèì äàòå " << date1.toString() << " ãîä 2004 ";
+		cout << "Ğ¸ Ğ¿Ğ¾Ğ»ÑƒÑ‡Ğ¸Ğ¼ " << date1.toString() << endl;
+		cout << endl << "Ğ£ÑÑ‚Ğ°Ğ½Ğ¾Ğ²Ğ¸Ğ¼ Ğ´Ğ°Ñ‚Ğµ " << date1.toString() << " Ğ³Ğ¾Ğ´ 2004 ";
 		date1.setYear(2004);
-		cout << "è ïîëó÷èì " << date1.toString() << endl;
+		cout << "Ğ¸ Ğ¿Ğ¾Ğ»ÑƒÑ‡Ğ¸Ğ¼ " << date1.toString() << endl;
 	}
 	catch (const exception& ex)
 	{
