@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-	SetConsoleOutputCP(1251); // если с этим не будет русских символов, то вставь 65001, вместо 1251
+	SetConsoleOutputCP(65001); // если с этим не будет русских символов, то вставь 65001, вместо 1251
 	try
 	{
 		Date date1(3, 12, 2021);
